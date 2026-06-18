@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy — Planos de Assinatura</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'prv-purple': '#7C3AED',
+            'prv-purple-light': '#9F67FF',
+            'prv-purple-dark': '#5B21B6',
+            'prv-bg': '#0F0D1A',
+            'prv-card': '#1A1730',
+            'prv-border': '#2D2A42',
+            'prv-text': '#E2E0F0',
+            'prv-muted': '#8B8AA0',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-prv-bg text-prv-text font-sans min-h-screen">
+
+  <!-- NAVBAR -->
+  <nav class="nav-bar fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4">
+    <a href="#" class="flex items-center gap-2">
+      <div class="logo-icon w-8 h-8 rounded-lg flex items-center justify-center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2Z" fill="white"/>
+        </svg>
+      </div>
+      <span class="text-xl font-bold text-white">Privacy</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#" class="text-prv-muted hover:text-white transition-colors text-sm">Início</a>
+      <a href="#" class="text-prv-muted hover:text-white transition-colors text-sm">Criadores</a>
+      <a href="#planos" class="text-prv-purple-light font-medium text-sm">Planos</a>
+      <a href="#" class="text-prv-muted hover:text-white transition-colors text-sm">FAQ</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <button class="hidden md:block text-prv-muted hover:text-white text-sm transition-colors">Entrar</button>
+      <button class="btn-primary px-4 py-2 rounded-lg text-white text-sm font-semibold">Começar grátis</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6 md:px-12 text-center">
+    <div class="max-w-3xl mx-auto">
+      <span class="badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium mb-6">
+        <span class="w-1.5 h-1.5 bg-prv-purple-light rounded-full animate-pulse"></span>
+        Plataforma #1 para criadores no Brasil
+      </span>
+      <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+        Monetize seu conteúdo com
+        <span class="gradient-text"> total privacidade</span>
+      </h1>
+      <p class="text-prv-muted text-lg md:text-xl leading-relaxed mb-10">
+        Crie planos de assinatura, receba pagamentos e conecte-se com seus fãs.
+        Tudo de forma segura, transparente e sem burocracia.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button class="btn-primary w-full sm:w-auto px-8 py-3.5 rounded-xl text-white font-semibold text-base">
+          Criar minha conta
+        </button>
+        <button class="btn-secondary w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold text-base">
+          Ver demonstração
+        </button>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats-bar mt-16 max-w-2xl mx-auto grid grid-cols-3 gap-6 rounded-2xl p-6">
+      <div>
+        <p class="text-2xl md:text-3xl font-bold text-white">50k+</p>
+        <p class="text-prv-muted text-xs md:text-sm mt-1">Criadores ativos</p>
+      </div>
+      <div class="border-x border-prv-border">
+        <p class="text-2xl md:text-3xl font-bold text-white">R$2M+</p>
+        <p class="text-prv-muted text-xs md:text-sm mt-1">Pagos em 2024</p>
+      </div>
+      <div>
+        <p class="text-2xl md:text-3xl font-bold text-white">4.9★</p>
+        <p class="text-prv-muted text-xs md:text-sm mt-1">Avaliação média</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS SECTION -->
+  <section id="planos" class="py-20 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Escolha seu plano</h2>
+        <p class="text-prv-muted text-base md:text-lg">
+          Comece gratuitamente e escale conforme crescer. Sem taxas ocultas.
+        </p>
+
+        <!-- BILLING TOGGLE -->
+        <div class="toggle-bar inline-flex items-center mt-8 rounded-xl p-1">
+          <button id="btn-monthly" class="toggle-btn toggle-active px-5 py-2 rounded-lg text-sm font-medium transition-all" onclick="setToggle('monthly')">Mensal</button>
+          <button id="btn-annual" class="toggle-btn px-5 py-2 rounded-lg text-sm font-medium transition-all text-prv-muted" onclick="setToggle('annual')">
+            Anual
+            <span class="badge-discount ml-2 text-xs font-semibold px-2 py-0.5 rounded-full">-20%</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PLAN CARDS -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+        <!-- STARTER -->
+        <div class="plan-card rounded-2xl p-7 flex flex-col">
+          <div class="plan-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-1">Starter</h3>
+          <p class="text-prv-muted text-sm mb-6">Perfeito para quem está começando</p>
+          <div class="flex items-end gap-1 mb-8">
+            <span class="text-prv-muted text-sm">R$</span>
+            <span class="text-4xl font-extrabold text-white" id="price-starter">0</span>
+            <span class="text-prv-muted text-sm mb-1">/mês</span>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Até 100 assinantes
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> 1 plano de assinatura
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Taxa de 10% por transação
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Suporte via e-mail
+            </li>
+            <li class="feature-item feature-disabled flex items-center gap-3 text-sm">
+              <span class="x-icon">✗</span> Analytics avançado
+            </li>
+            <li class="feature-item feature-disabled flex items-center gap-3 text-sm">
+              <span class="x-icon">✗</span> Domínio personalizado
+            </li>
+          </ul>
+          <button class="btn-outline w-full py-3 rounded-xl text-sm font-semibold transition-all">
+            Começar grátis
+          </button>
+        </div>
+
+        <!-- PRO (FEATURED) -->
+        <div class="plan-card plan-featured rounded-2xl p-7 flex flex-col relative">
+          <div class="badge-popular absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white whitespace-nowrap">
+            ⚡ Mais popular
+          </div>
+          <div class="plan-icon plan-icon-featured w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white">
+              <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-1">Pro</h3>
+          <p class="text-prv-muted text-sm mb-6">Para criadores em crescimento</p>
+          <div class="flex items-end gap-1 mb-8">
+            <span class="text-prv-muted text-sm">R$</span>
+            <span class="text-4xl font-extrabold text-white" id="price-pro">79</span>
+            <span class="text-prv-muted text-sm mb-1">/mês</span>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Assinantes ilimitados
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Até 5 planos de assinatura
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Taxa de 5% por transação
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Suporte prioritário
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Analytics avançado
+            </li>
+            <li class="feature-item feature-disabled flex items-center gap-3 text-sm">
+              <span class="x-icon">✗</span> Domínio personalizado
+            </li>
+          </ul>
+          <button class="btn-primary w-full py-3 rounded-xl text-sm font-semibold text-white transition-all">
+            Assinar Pro
+          </button>
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="plan-card rounded-2xl p-7 flex flex-col">
+          <div class="plan-icon w-12 h-12 rounded-xl flex items-center justify-center mb-5">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-1">Enterprise</h3>
+          <p class="text-prv-muted text-sm mb-6">Para grandes criadores e marcas</p>
+          <div class="flex items-end gap-1 mb-8">
+            <span class="text-prv-muted text-sm">R$</span>
+            <span class="text-4xl font-extrabold text-white" id="price-enterprise">249</span>
+            <span class="text-prv-muted text-sm mb-1">/mês</span>
+          </div>
+          <ul class="space-y-3 mb-8 flex-1">
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Assinantes ilimitados
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Planos ilimitados
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Taxa de 2% por transação
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Suporte dedicado 24/7
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Analytics avançado
+            </li>
+            <li class="feature-item flex items-center gap-3 text-sm">
+              <span class="check-icon">✓</span> Domínio personalizado
+            </li>
+          </ul>
+          <button class="btn-outline w-full py-3 rounded-xl text-sm font-semibold transition-all">
+            Falar com vendas
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="py-20 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Por que escolher o Privacy?</h2>
+        <p class="text-prv-muted text-base md:text-lg">Tudo que você precisa em uma única plataforma</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="feature-card rounded-2xl p-6">
+          <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Segurança total</h4>
+          <p class="text-prv-muted text-sm leading-relaxed">Criptografia de ponta a ponta e conformidade com LGPD para você e seus assinantes.</p>
+        </div>
+
+        <div class="feature-card rounded-2xl p-6">
+          <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Pagamentos instantâneos</h4>
+          <p class="text-prv-muted text-sm leading-relaxed">Receba via Pix, cartão de crédito ou débito. Saque quando quiser, sem burocracia.</p>
+        </div>
+
+        <div class="feature-card rounded-2xl p-6">
+          <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Analytics em tempo real</h4>
+          <p class="text-prv-muted text-sm leading-relaxed">Acompanhe receita, novos assinantes e engajamento em um dashboard completo.</p>
+        </div>
+
+        <div class="feature-card rounded-2xl p-6">
+          <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Gestão de assinantes</h4>
+          <p class="text-prv-muted text-sm leading-relaxed">Gerencie planos, ofertas especiais e comunique-se com sua base de fãs facilmente.</p>
+        </div>
+
+        <div class="feature-card rounded-2xl p-6">
+          <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Página personalizada</h4>
+          <p class="text-prv-muted text-sm leading-relaxed">Crie sua página de perfil com sua identidade visual e compartilhe com seu público.</p>
+        </div>
+
+        <div class="feature-card rounded-2xl p-6">
+          <div class="feature-icon w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-prv-purple-light">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.09 6.09l1.27-.93a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7a2 2 0 0 1 1.72 2.1z"/>
+            </svg>
+          </div>
+          <h4 class="text-white font-semibold mb-2">Suporte humanizado</h4>
+          <p class="text-prv-muted text-sm leading-relaxed">Time dedicado para te ajudar a crescer. Disponível por chat, e-mail e telefone.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="py-20 px-6 md:px-12">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="cta-card rounded-3xl p-10 md:p-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+          Pronto para monetizar seu conteúdo?
+        </h2>
+        <p class="text-prv-muted text-base md:text-lg mb-10">
+          Junte-se a mais de 50.000 criadores que já utilizam o Privacy. Comece gratuitamente hoje.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button class="btn-primary w-full sm:w-auto px-10 py-4 rounded-xl text-white font-bold text-base">
+            Criar conta grátis
+          </button>
+          <button class="btn-ghost w-full sm:w-auto px-10 py-4 rounded-xl font-semibold text-base">
+            Saiba mais →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-prv-border py-10 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="logo-icon w-7 h-7 rounded-md flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2Z" fill="white"/>
+          </svg>
+        </div>
+        <span class="text-white font-semibold">Privacy</span>
+        <span class="text-prv-muted text-sm ml-3">© 2024 Privacy Fintech. Todos os direitos reservados.</span>
+      </div>
+      <div class="flex items-center gap-6 text-prv-muted text-sm">
+        <a href="#" class="hover:text-white transition-colors">Termos de uso</a>
+        <a href="#" class="hover:text-white transition-colors">Privacidade</a>
+        <a href="#" class="hover:text-white transition-colors">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const prices = {
+      monthly:  { starter: 0, pro: 79,  enterprise: 249 },
+      annual:   { starter: 0, pro: 63,  enterprise: 199 },
+    };
+
+    function setToggle(mode) {
+      const btnM = document.getElementById('btn-monthly');
+      const btnA = document.getElementById('btn-annual');
+      if (mode === 'monthly') {
+        btnM.classList.add('toggle-active');
+        btnA.classList.remove('toggle-active');
+      } else {
+        btnA.classList.add('toggle-active');
+        btnM.classList.remove('toggle-active');
+      }
+      document.getElementById('price-starter').textContent    = prices[mode].starter;
+      document.getElementById('price-pro').textContent        = prices[mode].pro;
+      document.getElementById('price-enterprise').textContent = prices[mode].enterprise;
+    }
+  </script>
+</body>
+</html>
